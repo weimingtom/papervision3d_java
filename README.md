@@ -2,4 +2,4 @@
 Play with papervision3d (pv3d) on java awt. JUST FOR FUN (?)  
 
 ## NOTE: 
-This is base on **VERY OLD** version of papervision3d.  
+This is based on **VERY OLD** version of papervision3d.  
