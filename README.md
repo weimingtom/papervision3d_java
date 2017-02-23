@@ -11,3 +11,5 @@ https://code.google.com/p/papervision3d/
 * timdp/jflow  
 https://github.com/timdp/jflow  
 
+* matrix3d/spriteflexjs  
+https://github.com/matrix3d/spriteflexjs  
