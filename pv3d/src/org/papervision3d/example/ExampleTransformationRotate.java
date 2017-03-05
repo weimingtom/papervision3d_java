@@ -1,10 +1,19 @@
 package org.papervision3d.example;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import org.papervision3d.cameras.Camera3D;
+import org.papervision3d.materials.BitmapMaterial;
 import org.papervision3d.materials.ColorMaterial;
 import org.papervision3d.objects.Plane;
 import org.papervision3d.scenes.Scene3D;
 
+import flash.display.BitmapData;
+import flash.display.IBitmapDrawable;
 import flash.display.Sprite;
 import flash.events.Event;
 import flash.port.FlashSpriteWindow;
@@ -16,6 +25,18 @@ public class ExampleTransformationRotate extends Sprite {
 	private Sprite container;
 	private Scene3D scene;
 	private Camera3D camera;
+	private class TestJPG implements IBitmapDrawable {
+		@Override
+		public BufferedImage _getBitmap() {
+            BufferedImage img = null;
+			try {
+                img = ImageIO.read(new File("test.jpg"));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+			return img;
+		}
+	}
 	
 	public ExampleTransformationRotate() {
 		super();
@@ -37,7 +58,16 @@ public class ExampleTransformationRotate extends Sprite {
 		material.fillColor = 0xFF0000;
 		material.fillAlpha = 1.0;
 
-		plane = new Plane(material, 300, 300, 1, 1);
+		BitmapData backBuffer = new BitmapData(570, 570, false);
+		backBuffer.lock();
+		backBuffer.draw(new TestJPG());
+		backBuffer.unlock();
+		BitmapMaterial material2 = new BitmapMaterial(backBuffer);
+		material2.setDoubleSided(true);
+		material.fillColor = 0xFF0000;
+		material.fillAlpha = 1.0;
+		
+		plane = new Plane(material, 600, 600, 1, 1);
 
 		scene.addChild(plane);
 	}

@@ -1,0 +1,68 @@
+digraph android_graphics {
+//rankdir=LR; //TB
+
+node[fontname="PMingLiu"]
+edge[fontname="PMingLiu"]
+
+"Object" -> "Papervision3D" [color="#ff0000"]
+"CameraObject3D" -> "Camera3D" [color="#ff0000"]
+"Camera3D" -> "Matrix3D"
+"Camera3D" -> "Number3D"
+"Camera3D" -> "DisplayObject3D"
+"Mesh3D" -> "Plane" [color="#ff0000"]
+"Plane" -> "MaterialObject3D"
+"DisplayObjectContainer3D" -> "DisplayObject3D" [color="#ff0000"]
+"DisplayObject3D" -> "Number3D"
+"DisplayObject3D" -> "MaterialObject3D"
+"DisplayObject3D" -> "DisplayObjectContainer3D"
+"DisplayObject3D" -> "MaterialsList"
+"DisplayObject3D" -> "CameraObject3D"
+"DisplayObject3D" -> "DisplayObject3D"
+"DisplayObject3D" -> "Matrix3D"
+"DisplayObject3D" -> "GeometryObject3D"
+"DisplayObject3D" -> "SceneObject3D"
+"Mesh3D" -> "Ase" [color="#ff0000"]
+"Ase" -> "MaterialObject3D"
+"Object" -> "Number3D" [color="#ff0000"]
+"Number3D" -> "Number3D"
+"Object" -> "NumberUV" [color="#ff0000"]
+"Object" -> "Matrix3D" [color="#ff0000"]
+"Matrix3D" -> "Matrix3D"
+"Matrix3D" -> "Number3D"
+"Vertices3D" -> "Mesh3D" [color="#ff0000"]
+"Mesh3D" -> "MaterialObject3D"
+"Mesh3D" -> "CameraObject3D"
+"Mesh3D" -> "DisplayObject3D"
+"Face3D" -> "DisplayObject3D"
+"DisplayObject3D" -> "Vertices3D" [color="#ff0000"]
+"Vertices3D" -> "Matrix3D"
+"Vertices3D" -> "CameraObject3D"
+"Vertices3D" -> "DisplayObject3D"
+"EventDispatcher" -> "DisplayObjectContainer3D" [color="#ff0000"]
+"DisplayObjectContainer3D" -> "MaterialsList"
+"DisplayObjectContainer3D" -> "DisplayObject3D"
+"DisplayObject3D" -> "CameraObject3D" [color="#ff0000"]
+"CameraObject3D" -> "Matrix3D"
+"CameraObject3D" -> "Number3D"
+"EventDispatcher" -> "GeometryObject3D" [color="#ff0000"]
+"GeometryObject3D" -> "Matrix3D"
+"GeometryObject3D" -> "MaterialObject3D"
+"DisplayObjectContainer3D" -> "SceneObject3D" [color="#ff0000"]
+"SceneObject3D" -> "MaterialsList"
+"SceneObject3D" -> "CameraObject3D"
+"SceneObject3D" -> "DisplayObject3D"
+"Object" -> "MaterialObject3D" [color="#ff0000"]
+"MaterialObject3D" -> "MaterialObject3D"
+"MaterialObject3D" -> "SceneObject3D"
+"EventDispatcher" -> "Collada" [color="#ff0000"]
+"Collada" -> "DisplayObjectContainer3D"
+"Collada" -> "MaterialsList"
+"Event" -> "FileLoadEvent" [color="#ff0000"]
+"MaterialObject3D" -> "ColorMaterial" [color="#ff0000"]
+"Object" -> "MaterialsList" [color="#ff0000"]
+"MaterialsList" -> "MaterialObject3D"
+"MaterialObject3D" -> "WireframeMaterial" [color="#ff0000"]
+"BitmapMaterial" -> "BitmapAssetMaterial" [color="#ff0000"]
+"MaterialObject3D" -> "BitmapMaterial" [color="#ff0000"]
+"SceneObject3D" -> "Scene3D" [color="#ff0000"]
+}

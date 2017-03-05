@@ -291,6 +291,7 @@ public class DisplayObject3D extends DisplayObjectContainer3D {
 			this.geometry = geometry;
 		}
 		this.projected = new HashMap<Vertex3D, Vertex2D>();
+		this.projected_ = new HashMap<Face3D, MatrixMap>();
 	}
 	
 	/**

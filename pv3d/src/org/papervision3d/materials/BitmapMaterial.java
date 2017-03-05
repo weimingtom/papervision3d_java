@@ -31,7 +31,10 @@ public class BitmapMaterial extends MaterialObject3D {
 		this.bitmap = createBitmap(asset);
 		this._texture = asset;
 	}
-	
+
+	public BitmapMaterial(Object asset) {
+		this(asset, null);
+	}
 	/**
 	 * 
 	 * @param	asset 位图数据（BitmapData的子类对象）
