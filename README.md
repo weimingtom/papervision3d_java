@@ -13,3 +13,6 @@ https://github.com/timdp/jflow
 
 * matrix3d/spriteflexjs  
 https://github.com/matrix3d/spriteflexjs  
+
+* triangletest  
+https://github.com/weimingtom/triangletest  
