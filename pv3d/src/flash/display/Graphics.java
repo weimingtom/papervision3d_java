@@ -5,6 +5,9 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.GeneralPath;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +21,7 @@ public class Graphics {
 	private double _currentY;
 	private double _lastX;
 	private double _lastY;
+	private BufferedImage _affineImage;
 	
 	public double _offsetX;
 	public double _offsetY;
@@ -37,7 +41,8 @@ public class Graphics {
 	
 	public void clear() {
 		if (_graph != null) {
-			_graph.clearRect(0, 0, 800, 600);
+			//_graph.clearRect(0, 0, 800, 600); //FIXME:
+			_graph.clearRect(0, 0, this._window.getWidth(), this._window.getHeight());
 		}
 	}
 	
@@ -135,6 +140,29 @@ public class Graphics {
 				_graph.fillPolygon(arrFillX, arrFillY, arrFillX.length);
 			}
 			if (_isFillBitmap) {
+				GeneralPath path = new GeneralPath();
+				path.moveTo(_fillX.get(0), _fillY.get(0));
+				path.lineTo(_fillX.get(1), _fillY.get(1));
+				path.lineTo(_fillX.get(2), _fillY.get(2));
+				_graph.setClip(path);
+				if (_affineImage != null) {
+					_affineImage = new BufferedImage(this._window.getWidth(), this._window.getHeight(), BufferedImage.TYPE_INT_ARGB);
+				}
+				//try {
+					AffineTransform transform = new AffineTransform(
+							this._fillMatrix.a,
+							this._fillMatrix.b,
+							this._fillMatrix.c,
+							this._fillMatrix.d,
+							this._fillMatrix.tx,
+							this._fillMatrix.ty);
+					AffineTransformOp op = new AffineTransformOp(transform,  
+			                AffineTransformOp.TYPE_BILINEAR);  
+			        op.filter(this._fillBitmapData._image, _affineImage);  				
+					_graph.drawImage(_affineImage, 0, 0, null);
+					_graph.setClip(null);
+				//} catch (Exception e) { e.printStackTrace();}
+				/*
 				AffineTransform translationTransform = //new AffineTransform();
 						new AffineTransform(
 								this._fillMatrix.a,
@@ -149,6 +177,7 @@ public class Graphics {
 						this._fillBitmapData._image, 
 						translationTransform);
 				}
+				*/
 			}
 			_isLineColor = false;
 			_isFillColor = false;

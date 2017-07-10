@@ -39,10 +39,10 @@ public class BitmapData {
 	}
 	
 	public int getWidth() {
-		return 0;
+		return this._image.getWidth();
 	}
 	
 	public int getHeight() {
-		return 0;
+		return this._image.getHeight();
 	}
 }

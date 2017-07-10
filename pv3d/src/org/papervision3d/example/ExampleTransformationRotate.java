@@ -20,6 +20,8 @@ import flash.port.FlashSpriteWindow;
 import flash.port.FlashWindow;
 
 public class ExampleTransformationRotate extends Sprite {
+	private final static boolean USE_BITMAP = true;
+	
 	private Plane plane;
 
 	private Sprite container;
@@ -67,8 +69,12 @@ public class ExampleTransformationRotate extends Sprite {
 		material.fillColor = 0xFF0000;
 		material.fillAlpha = 1.0;
 		
-		plane = new Plane(material, 600, 600, 1, 1);
-
+		if (!USE_BITMAP) {
+			plane = new Plane(material, 600, 600, 1, 1);
+		} else {
+			plane = new Plane(material2, 600, 600, 1, 1);
+		}
+		
 		scene.addChild(plane);
 	}
 	

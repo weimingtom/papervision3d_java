@@ -94,7 +94,9 @@
 				var ct:Number = (u2 - u0);
 				var dt:Number = (v2 - v0);
 				var m:Matrix = new Matrix(at, bt, ct, dt, u0, v0);
+				//trace(">>>transformUV m :" + m.toString());
 				m.invert();
+				trace(">>>transformUV m :" + m.toString());
 				var mapping:Object = instance.projected[this] || (instance.projected[this] = new Object());
 				mapping._a = m.a;
 				mapping._b = m.b;
@@ -160,6 +162,7 @@
 			if (texture)
 			{
 				var map:Object = instance.projected[this] || transformUV(instance);
+				trace(">>>beginBitmapFill map : " + "(a="+map._a+", b="+map._b+", c="+map._c+", d="+map._d+", tx="+map._tx+", ty="+map._ty+")");
 				var a1:Number = map._a;
 				var b1:Number = map._b;
 				var c1:Number = map._c;
@@ -177,6 +180,7 @@
 				matrix.d = c1 * b2 + d1 * d2;
 				matrix.tx = tx1 * a2 + ty1 * c2 + x0;
 				matrix.ty = tx1 * b2 + ty1 * d2 + y0;
+				trace(">>>beginBitmapFill matrix : " + matrix.toString());
 				graphics.beginBitmapFill(texture, matrix, false, material.smooth);
 			}
 			else if (fillAlpha)
