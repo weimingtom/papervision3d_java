@@ -12,7 +12,7 @@ public class Papervision3D {
 	//版权信息
 	static public String AUTHOR = "(c) 2006-2007 Copyright by Carlos Ulloa | papervision3d.org | C4RL054321@gmail.com";
 	//是否显示日志
-	static public boolean VERBOSE = true;
+	static public boolean VERBOSE = false;
 	
 	/**
 	 * 日志报告

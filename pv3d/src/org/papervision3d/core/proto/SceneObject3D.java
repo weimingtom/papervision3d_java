@@ -97,7 +97,7 @@ public class SceneObject3D extends DisplayObjectContainer3D {
 		Stats stats = this.stats;
 		stats.performance = System.currentTimeMillis();
 		for (MaterialObject3D m : this.materials.materialsByName.values()) {
-			System.out.println("SceneObject3D:materials " + m);
+			Papervision3D.log("SceneObject3D:materials " + m);
 			if (m.animated) {
 				m.updateBitmap();
 			}

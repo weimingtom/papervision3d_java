@@ -13,7 +13,7 @@
 		//版权信息
 		static public var AUTHOR:String = '(c) 2006-2007 Copyright by Carlos Ulloa | papervision3d.org | C4RL054321@gmail.com';
 		//是否显示日志
-		static public var VERBOSE:Boolean = true;
+		static public var VERBOSE:Boolean = false;
 		
 		/**
 		 * 日志报告

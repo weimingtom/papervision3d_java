@@ -96,7 +96,7 @@ public class Face3D {
 			double dt = (v2 - v0);
 			Matrix m = new Matrix(at, bt, ct, dt, u0, v0);
 			m.invert();
-			System.out.println(">>>transformUV m :" + m.toString());
+			Papervision3D.log(">>>transformUV m :" + m.toString());
 			if (instance.projected_.get(this) != null) {
 				mapping = instance.projected_.get(this); 
 			} else {
@@ -166,7 +166,7 @@ public class Face3D {
 			} else {
 				map = transformUV(instance);
 			}
-			System.out.println(">>>beginBitmapFill map : " + "(a="+map._a+", b="+map._b+", c="+map._c+", d="+map._d+", tx="+map._tx+", ty="+map._ty+")");
+			Papervision3D.log(">>>beginBitmapFill map : " + "(a="+map._a+", b="+map._b+", c="+map._c+", d="+map._d+", tx="+map._tx+", ty="+map._ty+")");
 			double a1 = map._a;
 			double b1 = map._b;
 			double c1 = map._c;
@@ -185,7 +185,15 @@ public class Face3D {
 			matrix.tx = tx1 * a2 + ty1 * c2 + x0;
 			matrix.ty = tx1 * b2 + ty1 * d2 + y0;
 			//FIXME:debug
-			System.out.println(">>>beginBitmapFill matrix : " + matrix.toString());
+			Papervision3D.log(">>>beginBitmapFill matrix : " + matrix.toString());
+			if (false)
+			{
+				//calculated in another way, only for debug
+				//see https://github.com/weimingtom/triangletest 
+				matrix = graphics._getAffineTransform(this, texture, x0, y0, x1, y1, x2, y2);
+				Papervision3D.log(">>>beginBitmapFill matrix 2 : " + matrix.toString());
+			}
+			
 			graphics.beginBitmapFill(texture, matrix, false, material.smooth);
 		} else if (fillAlpha != 0) {
 			graphics.beginFill(material.fillColor, fillAlpha);

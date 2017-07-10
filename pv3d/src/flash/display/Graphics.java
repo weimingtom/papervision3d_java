@@ -11,6 +11,11 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.papervision3d.core.NumberUV;
+import org.papervision3d.core.geom.Face3D;
+
+import com.bric.geom.TransformUtils;
+
 import flash.geom.Matrix;
 import flash.port.FlashWindow;
 
@@ -38,6 +43,33 @@ public class Graphics {
 	private boolean _isFillBitmap = false;
 	private BitmapData _fillBitmapData = null;
 	private Matrix _fillMatrix = null;
+	
+	public Matrix _getAffineTransform(Face3D face, BitmapData texture,
+			double x0, double y0, double x1, double y1, double x2, double y2) {
+		List<NumberUV> uv = face.uv;
+		double w = texture.getWidth();
+		double h = texture.getHeight();
+		double u0 = uv.get(0).u * w;
+		double v0 = uv.get(0).v * h;
+		double u1 = uv.get(1).u * w;
+		double v1 = uv.get(1).v * h;
+		double u2 = uv.get(2).u * w;
+		double v2 = uv.get(2).v * h;
+		
+		//FIXME: don't be calculated here, be calculated in endFill()
+//		x0 += _offsetX;
+//		y0 += _offsetY;
+//		x1 += _offsetX;
+//		y1 += _offsetY;
+//		x2 += _offsetX;
+//		y2 += _offsetY;
+		
+		AffineTransform transform = TransformUtils.createAffineTransform(u0, v0, u1, v1, u2, v2, 
+				x0, y0, x1, y1, x2, y2);
+		double[] flatmatrix = new double[6];
+		transform.getMatrix(flatmatrix);
+		return new Matrix(flatmatrix[0],flatmatrix[1],flatmatrix[2],flatmatrix[3],flatmatrix[4],flatmatrix[5]);
+	}
 	
 	public void clear() {
 		if (_graph != null) {
@@ -145,7 +177,7 @@ public class Graphics {
 				path.lineTo(_fillX.get(1), _fillY.get(1));
 				path.lineTo(_fillX.get(2), _fillY.get(2));
 				_graph.setClip(path);
-				if (_affineImage != null) {
+				if (_affineImage == null) {
 					_affineImage = new BufferedImage(this._window.getWidth(), this._window.getHeight(), BufferedImage.TYPE_INT_ARGB);
 				}
 				//try {
@@ -154,8 +186,8 @@ public class Graphics {
 							this._fillMatrix.b,
 							this._fillMatrix.c,
 							this._fillMatrix.d,
-							this._fillMatrix.tx,
-							this._fillMatrix.ty);
+							this._fillMatrix.tx + _offsetX, //FIXME:offset is not calculated before, so put it here
+							this._fillMatrix.ty + _offsetY);
 					AffineTransformOp op = new AffineTransformOp(transform,  
 			                AffineTransformOp.TYPE_BILINEAR);  
 			        op.filter(this._fillBitmapData._image, _affineImage);  				
