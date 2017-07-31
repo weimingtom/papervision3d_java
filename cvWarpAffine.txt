@@ -1,0 +1,9 @@
+用AffineTransformOp画三角形纹理的效果是这样子（剪裁用setClip，变换用AffineTransformOp），
+其中求出仿射变换矩阵的公式我是用了一个开源项目的代码，看来效果还是可以的。
+AffineTransformOp有两种方式得到仿射后的结果，我选择通过参数的方式，
+因为这样在渲染方法中执行时可以重复使用位图对象而无需频繁创建。
+
+
+cvGetAffineTransform
+cvWarpAffine
+http://blog.csdn.net/hitwengqi/article/details/6888783
