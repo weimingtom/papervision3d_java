@@ -35,3 +35,7 @@ https://github.com/joa/apparat/blob/master/apparat-playerglobal/src/main/java/fl
 * org.papervision3d.example.ExampleTransformationRotate  
 ![screenshot](/screenshot/screenshot_20170710112344.jpg)    
 
+## About Affine  
+* The implementation of Affine, see two functions in OpenCV:  
+cvWarpAffine  
+cvGetAffineTransform  
