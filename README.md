@@ -50,7 +50,7 @@ see this function in OpenCV:
 cvGetAffineTransform, implemented in papervision3d itself   
 ((u1,v1),(u2,v2),(u3,v3))->((x1,y1),(x2,y2),(x3,y3))  
 
-Another little different implementation is in Pixelitor, _getAffineTransform, see here:  
+* Another little different implementation of transformUV() is in Pixelitor, wrapped in _getAffineTransform, see here:  
 https://github.com/weimingtom/papervision3d_java/blob/master/pv3d/src/com/bric/geom/TransformUtils.java  
 https://github.com/lbalazscs/Pixelitor/blob/master/src/main/java/com/bric/geom/TransformUtils.java  
 https://github.com/pwlam09/FYP/blob/master/src/main/java/com/bric/geom/TransformUtils.java  
