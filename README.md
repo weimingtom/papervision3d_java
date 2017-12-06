@@ -43,9 +43,9 @@ https://github.com/soywiz/java-flash/blob/master/src/com/soywiz/flash/util/Matri
 triangletest  
 https://github.com/weimingtom/triangletest  
 This question has two parts:  
-1) First, How to calculate the matrix to transform 3 points (u1,v1),(u2,v2),(u3,v3) to 3 points (x1,y1),(x2,y2),(x3,y3).  
-2) Second, How to make the matrix transform on the image triangle region, and get the target image triangle region.   
-I find the resolution is below, using 1) cvGetAffineTransform 2) cvWarpAffine (AffineTransformOp if in Java)  
+**1** First, How to calculate the matrix to transform 3 points (u1,v1),(u2,v2),(u3,v3) to 3 points (x1,y1),(x2,y2),(x3,y3).  
+**2** Second, How to make the matrix transform on the image triangle region, and get the target image triangle region.   
+I find the solution is below, using 1) **cvGetAffineTransform** 2) **cvWarpAffine** (**AffineTransformOp** in Java)  
 
 * The underlying implementation of AffineTransformOp, see this function in OpenCV:  
 cvWarpAffine  
