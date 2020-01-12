@@ -1,5 +1,7 @@
 package org.papervision3d.core;
 
+import java.util.List;
+
 /**
  * 三维转换矩阵
  */
@@ -25,6 +27,30 @@ public class Matrix3D {
 	 * @param	args
 	 */
 	public Matrix3D(double[] args) {
+		if (args.length >= 12) {
+			n11 = args[0]; 
+			n12 = args[1];  
+			n13 = args[2];  
+			n14 = args[3];
+			n21 = args[4];  
+			n22 = args[5];  
+			n23 = args[6];  
+			n24 = args[7];
+			n31 = args[8];  
+			n32 = args[9];  
+			n33 = args[10]; 
+			n34 = args[11];
+		} else {
+			n11 = n22 = n33 = 1;
+			n12 = n13 = n14 = n21 = n23 = n24 = n31 = n32 = n34 = 0;
+		}
+	}
+	public Matrix3D(List<Double> args2) {
+		double[] args = new double[args2.size()];
+		int i = 0;
+		for (Double d : args2) {
+			args[i++] = d;
+		}
 		if (args.length >= 12) {
 			n11 = args[0]; 
 			n12 = args[1];  

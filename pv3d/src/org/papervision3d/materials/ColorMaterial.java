@@ -16,11 +16,11 @@ public class ColorMaterial extends MaterialObject3D {
 		this(color, 100);
 	}
 	
-	public ColorMaterial(int color, int alpha) {
+	public ColorMaterial(int color, double alpha) {
 		this(color, alpha, null);
 	}
 	
-	public ColorMaterial(int color, int alpha, Map<String, Object> initObject) {
+	public ColorMaterial(int color, double alpha, Map<String, Object> initObject) {
 		super(initObject);
 		this.fillColor = color;
 		this.fillAlpha = alpha;

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import flash.display.BitmapData;
+import flash.display.IBitmapDrawable;
 
 /**
  * 位图资源材质，用反射获取BitmapData
@@ -15,6 +16,10 @@ public class BitmapAssetMaterial extends BitmapMaterial {
 	static private Map<String, BitmapData> _library = new HashMap<String, BitmapData>();
 	//应用计数，类名->BitmapData
 	static private Map<String, Integer> _count = new HashMap<String, Integer>();
+	
+	public BitmapAssetMaterial(Object asset) {
+		this(asset, null);
+	}
 	
 	public BitmapAssetMaterial(Object asset, Map<String, Object>initObject) {
 		super(asset, initObject);
@@ -29,11 +34,13 @@ public class BitmapAssetMaterial extends BitmapMaterial {
 		//资源名称改变（把原有位图的引用计数减一）
 		if (this._texture != asset) {
 			//删除原有引用
-			_count.put((String)this._texture, _count.get((String)this._texture) - 1);
-			BitmapData prevBitmap = _library.get((String)this._texture);
-			if (prevBitmap != null && _count.get((String)this._texture) == 0) {
-				//应用计数减到0时析构
-				prevBitmap.dispose();
+			if (this._texture != null) {
+				_count.put((String)this._texture, _count.get((String)this._texture) - 1);
+				BitmapData prevBitmap = _library.get((String)this._texture);
+				if (prevBitmap != null && _count.get((String)this._texture) == 0) {
+					//应用计数减到0时析构
+					prevBitmap.dispose();
+				}			
 			}
 		}
 		BitmapData bitmap = _library.get((String)asset);
@@ -52,6 +59,18 @@ public class BitmapAssetMaterial extends BitmapMaterial {
 	}
 	
 	private static BitmapData getDefinitionByName(String asset) {
-		return null;
+		return _definitionMap.get(asset);
+	}
+	
+	static private Map<String, BitmapData> _definitionMap = new HashMap<String, BitmapData>();
+	public static void _setDefinitionByName(String name, IBitmapDrawable drawable) {
+		BitmapData bitmapData = new BitmapData(
+				drawable._getBitmap().getWidth(), 
+				drawable._getBitmap().getHeight(), 
+				false);
+		bitmapData.lock();
+		bitmapData.draw(drawable);
+		bitmapData.unlock();
+		_definitionMap.put(name, bitmapData);
 	}
 }

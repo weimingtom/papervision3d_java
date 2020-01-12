@@ -242,7 +242,10 @@ public class DisplayObject3D extends DisplayObjectContainer3D {
 	public DisplayObject3D() {
 		this(null, null, null);
 	}
-		
+	public DisplayObject3D(String name) {
+		this(name, null, null);
+	}
+	
 	/**
 	 * 构造函数
 	 * @param	name 名称，用于三维显示容器的列表

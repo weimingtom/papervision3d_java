@@ -27,7 +27,8 @@ public class ExampleTransformationRotate extends Sprite {
 	private Sprite container;
 	private Scene3D scene;
 	private Camera3D camera;
-	private class TestJPG implements IBitmapDrawable {
+	
+	private static class TestJPG implements IBitmapDrawable {
 		@Override
 		public BufferedImage _getBitmap() {
             BufferedImage img = null;

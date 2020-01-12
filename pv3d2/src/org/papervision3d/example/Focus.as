@@ -10,7 +10,8 @@ package org.papervision3d.example
 	import org.papervision3d.materials.*;
 	import org.papervision3d.events.*;
 	
-	[SWF(width = '1000', height = '600', backgroundColor = '0xcccccc')]
+	//[SWF(width = '1000', height = '600', backgroundColor = '0xcccccc')]
+	[SWF(width='640', height='480', frameRate='30')]
 	public class Focus extends Sprite
 	{
 		private var container:Sprite;

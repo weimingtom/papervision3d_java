@@ -11,6 +11,7 @@ package org.papervision3d.example {
 	import org.papervision3d.cameras.Camera3D;
 	import org.papervision3d.materials.BitmapMaterial;
 	
+	[SWF(width='640', height='480', frameRate='30')]
 	public class ExampleTransformationRotate extends Sprite {
 
 		private var plane:Plane;

@@ -96,6 +96,9 @@ public class DisplayObjectContainer3D extends EventDispatcher {
 	public void addCollada(String filename, MaterialsList materials, double scale) {
 		Collada collada = new Collada(this, filename, materials, scale);
 	}
+	public void addCollada(String filename, MaterialsList materials) {
+		this.addCollada(filename, materials, 1);
+	}
 	
 	/**
 	 * 字符串形式，调试用
@@ -116,4 +119,6 @@ public class DisplayObjectContainer3D extends EventDispatcher {
 		}
 		return list;
 	}
+	
+	
 }

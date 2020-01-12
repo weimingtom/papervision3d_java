@@ -18,8 +18,8 @@ public class FlashWindow extends Panel implements Runnable, KeyListener,
 	MouseListener, MouseMotionListener {
 	private static final long serialVersionUID = 1L;
 	
-	private static final int WINDOW_WIDTH = 800;
-	private static final int WINDOW_HEIGHT = 600;
+	private static final int WINDOW_WIDTH = 640; //800;
+	private static final int WINDOW_HEIGHT = 480; //600;
 	private static final String WINDOW_TITLE = "FlashWindow";
 	
 	private Frame frame;

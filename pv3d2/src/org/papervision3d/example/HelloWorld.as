@@ -32,7 +32,9 @@ package org.papervision3d.example
 			container.y = 240;
 			scene = new Scene3D(container);
 			camera = new Camera3D();
-			addEarth();
+			if (false) {
+				addEarth();
+			}
 			addSpace();
 		}
 		
@@ -48,16 +50,23 @@ package org.papervision3d.example
 		private function addSpace():void
 		{
 			var materialSpace:BitmapAssetMaterial = new BitmapAssetMaterial("Space");
-			var plane:DisplayObject3D = new Plane(materialSpace, 6400, 4800, 8, 8);
-			plane.z = 500;
-			scene.addChild(plane);
+			if (false) {
+				var plane:DisplayObject3D = new Plane(materialSpace, 6400, 4800, 8, 8);
+				plane.z = 500;
+				scene.addChild(plane);
+			} else {
+				var plane:DisplayObject3D = new Plane(materialSpace, 640 * 4, 480 * 4, 1, 1);
+				scene.addChild(plane);				
+			}
 		}
 		
 		private function loop3D(event:Event):void
 		{
-			camera.x = -container.mouseX / 4;
-			camera.y = container.mouseY / 3;
-			sphere.yaw( /*0.2*/ 20 );
+			if (false) {
+				camera.x = -container.mouseX / 4;
+				camera.y = container.mouseY / 3;
+				sphere.yaw( /*0.2*/ 20 );
+			}
 			scene.renderCamera( camera );
 		}
 	}

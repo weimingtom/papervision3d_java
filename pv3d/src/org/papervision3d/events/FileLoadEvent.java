@@ -27,4 +27,7 @@ public class FileLoadEvent extends Event {
 		super(type, bubbles, cancelable);
 		file = p_file;
 	}
+	public FileLoadEvent(String type, String p_file) {
+		this(type, p_file, false, false);
+	}
 }

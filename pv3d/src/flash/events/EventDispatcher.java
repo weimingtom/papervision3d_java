@@ -25,4 +25,13 @@ public class EventDispatcher  {
 			_onEvent(listener, new Event(type, false, false));
 		}
 	}
+	
+	public boolean dispatchEvent(Event event) {
+		String listener = _eventMap.get(event._type);
+		if (listener != null) {
+			//FIXME:
+			_onEvent(listener, event);
+		}
+		return true;
+	}
 }

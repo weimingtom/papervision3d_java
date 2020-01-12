@@ -29,6 +29,10 @@ public class Mesh3D extends Vertices3D {
 		this.geometry.faces = (faces != null ? faces : new ArrayList<Face3D>());
 		this.material = material != null ? material : MaterialObject3D.getDEFAULT();
 	}
+	public Mesh3D(MaterialObject3D material, List<Vertex3D> vertices, 
+			List<Face3D> faces, String name) {
+		this(material, vertices, faces, name, null);
+	}
 	
 	/**
 	 * 投影
